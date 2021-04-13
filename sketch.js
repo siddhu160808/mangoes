@@ -93,12 +93,22 @@ function keyPressed(){
     ELASTIC.attach(STONE.body);
   }
 }
-function Collision(object1,object2){
-  var distance = dist(object1.body.position.x,object1.body.position.y,
-    object2.body.position.x,object2.body.position.y)
-    if(distance <= object1.radius+object2.radius){
-      Matter.Body.setStatic(object2.body,false);
-      console.log("collison" )
+function Collision(lstone,lmango){
+	/*var collision = Matter.SAT.collides(lstone,lmango);
+	if(collision.collided){
+		console.log("collided");
+		Matter.Body.setStatic(lmango,false);	
+	}*/
+  mangoBodyPosition=lmango.body.position
+  stoneBodyPosition=lstone.body.position
+  
+  var distance=dist(stoneBodyPosition.x, stoneBodyPosition.y, mangoBodyPosition.x, mangoBodyPosition.y)
+  //console.log(distance)
+ // console.log(lmango.r+lstone.r)
+  	if(distance<=lmango.r+lstone.r)
+    {
+      //console.log(distance);
+  	  Matter.Body.setStatic(lmango.body,false);
     }
-}
 
+  }
